@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import Card from "../UI/Card";
 import ExpenseFilter from "./ExpenseFilter";
+import ExpensesList from "./ExpensesList";
 
 const Expenses = (props) => {
-  const [filteredYear, setFilterYear] = useState("2020");
+  const [filteredYear, setFilterYear] = useState("2021");
 
   const filterChangeHandler = (selectedYear) => {
     setFilterYear(selectedYear);
@@ -23,17 +23,7 @@ const Expenses = (props) => {
         onChangeFilter={filterChangeHandler}
       />
 
-      {/* Dynamically adding Expenses to Expense Array(here items[]) */}
-      {/* expense = individual array element */}
-      {filteredExpenses.map((expense) => (
-        <ExpenseItem
-          /* Key is added to uniquely identify individual Component in array */
-          key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-        />
-      ))}
+      <ExpensesList items={filteredExpenses} />
     </Card>
   );
 };
