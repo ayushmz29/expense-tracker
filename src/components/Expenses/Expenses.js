@@ -11,6 +11,10 @@ const Expenses = (props) => {
     setFilterYear(selectedYear);
   };
 
+  const filteredExpenses = props.items.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
   return (
     <Card className="expenses">
       {/* Component for Filter Menu */}
@@ -18,9 +22,10 @@ const Expenses = (props) => {
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
+
       {/* Dynamically adding Expenses to Expense Array(here items[]) */}
       {/* expense = individual array element */}
-      {props.items.map((expense) => (
+      {filteredExpenses.map((expense) => (
         <ExpenseItem
           /* Key is added to uniquely identify individual Component in array */
           key={expense.id}
