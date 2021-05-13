@@ -18,7 +18,6 @@ const Expenses = (props) => {
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-
       {/* Dynamically adding Expenses to Expense Array(here items[]) */}
       {/* expense = individual array element */}
       {props.items.map((expense) => (
